@@ -113,7 +113,7 @@ function clickHandler(event) {
   console.log(event.target.name);
 
 
-  if (counter < 2 ) {
+  if (counter < 25 ) {
 
     for ( var i = 0; i < imagePool.length; i++)
       if (imagePool[i].name === event.target.name) {
