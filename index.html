@@ -67,6 +67,16 @@
         <canvas id="myChart"></canvas>
       </div>
 
+      <div id="bottom-box">
+        <select id="chartType">
+          <option value="None">-- Select --</option>
+          <option value="bar">Bar Graph</option>
+          <option value="horizontalBar" selected>Horizontal Bar Graph </option>
+          <option value="pie">Pie Graph</option>
+        </select>
+        <button id="submitButton" type="button" onclick="GetSelectedValue()">Change Chart</button>
+      </div>
+
     <footer>
       <img src="img/logo.jpg">  
       <p>Bus Mall &copy; 2020 &#183; All Rights Reserved.</p>

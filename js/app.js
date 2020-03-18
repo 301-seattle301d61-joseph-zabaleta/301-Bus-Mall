@@ -4,8 +4,10 @@
 
 var imagePool = [];
 
-
+//Gets the canvas element by ID where the chart will go
 var ctx = document.getElementById('myChart').getContext('2d');
+
+//Creates the chart using constructor
 var mainChart = new Chart(ctx, {
   type: 'horizontalBar',
   data: {
@@ -248,7 +250,7 @@ function clickHandler(event) {
   console.log(event.target.name);
 
 
-  if (counter < 25 ) {
+  if (counter < 4 ) {
 
     for ( var i = 0; i < imagePool.length; i++)
       if (imagePool[i].name === event.target.name) {
@@ -259,8 +261,7 @@ function clickHandler(event) {
 
   } else {
     event = false;
-    alert('Thank you for taking the product servey!');
-    // postResults();
+    // alert('Thank you for taking the product servey!');
     renderChartData();
     mainChart.update();
 
@@ -270,8 +271,27 @@ function clickHandler(event) {
   }
 }
 
-
 //adding listener to elements in html
 getImage1.addEventListener('click', clickHandler);
 getImage2.addEventListener('click', clickHandler);
 getImage3.addEventListener('click', clickHandler);
+
+
+
+
+//TRYING TO CHANGE THIS
+
+var result;
+
+function GetSelectedValue(){
+  var list = document.getElementById('chartType');
+  result = list.options[list.selectedIndex].value;
+}
+
+function buttonHandler (event) {
+  console.log(result);
+
+}
+
+var buttonEl = document.getElementById('submitButton');
+buttonEl.addEventListener('click', buttonHandler);
