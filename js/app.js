@@ -6,6 +6,7 @@ var imagePool = [];
 
 
 var ctx = document.getElementById('myChart').getContext('2d');
+// eslint-disable-next-line no-undef
 var mainChart = new Chart(ctx, {
   type: 'horizontalBar',
   data: {
@@ -164,6 +165,8 @@ function renderChartData() {
 
 }
 
+//not being used at this time anymore.
+// eslint-disable-next-line no-unused-vars
 function postResults() {
 
   for (var i = 0; i < imagePool.length; i++)
