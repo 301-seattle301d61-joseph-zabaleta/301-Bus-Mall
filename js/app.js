@@ -262,6 +262,7 @@ function clickHandler(event) {
   } else {
     event = false;
     // alert('Thank you for taking the product servey!');
+    // localStorage.setItem('imagePool', JSON.stringify(imagePool));
     renderChartData();
     mainChart.update();
 
