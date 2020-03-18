@@ -6,6 +6,7 @@
   <title>Bus Mall Survey</title>
   <link rel="stylesheet" type="text/css" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 </head>
   <body>
     <header>
@@ -18,11 +19,11 @@
     </header>
 
       <div id="main">
-        <div id="result-box">
+        <!-- <div id="result-box">
           <h2>Results</h2>
          <ul id="voteData">
          </ul>
-        </div>
+        </div> -->
         <div id="product-box">
           <div>
             <img id="img1" alt="Product 1">
@@ -33,7 +34,7 @@
           <div>
             <img id="img3" alt="Product 3">
           </div>
-          <div id="instructions">
+          <!-- <div id="instructions">
             <p>
               Welcome to the Bus Mall Catalog Survey. This will help us identify products that would be most relevent to our readers in our catalogs. Please take the time to vote for products you like the most by clicking on the image that you favor the most.
             </p>
@@ -45,8 +46,25 @@
                 <li>Thanks you for choosing Bus Mall Catalog!</li>
               </ul>
             </p>
-          </div>
+          </div> -->
         </div>
+      </div>
+      <div id="instructions">
+        <p>
+          Welcome to the Bus Mall Catalog Survey. This will help us identify products that would be most relevent to our readers in our catalogs. Please take the time to vote for products you like the most by clicking on the image that you favor the most.
+        </p>
+        <p>
+          <ul>
+            <label>Instructions</label>
+            <li>Click on any of the three images</li>
+            <li>There are 25 rounds of choices</li>
+            <li>Thanks you for choosing Bus Mall Catalog!</li>
+          </ul>
+        </p>
+      </div>
+      <div id="chart-box">
+        <canvas id="myChart"></canvas>
+
       </div>
 
     <footer>

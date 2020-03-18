@@ -4,6 +4,130 @@
 
 var imagePool = [];
 
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var mainChart = new Chart(ctx, {
+  type: 'horizontalBar',
+  data: {
+    labels: [],
+    datasets: [{
+      label: '# of Votes',
+      data: [],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderWidth: 3
+    },{
+      label: '# of Times Rendered',
+      data: [],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderWidth: 3
+    }]
+  },
+  options: {
+    legend: {
+      position: 'right',
+    },
+    title:{
+      display: true,
+      text: 'Total Votes / Total Times Rendered',
+      fontSize: 25
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+
 //construction function to create image objects
 
 function ProductImage(name, imagePath) {
@@ -28,6 +152,17 @@ ProductImage.prototype.renderData = function() {
 
   getList.appendChild(createListEl);
 };
+
+function renderChartData() {
+
+  for (var i = 0; i < imagePool.length; i++) {
+
+    mainChart.data.labels.push(imagePool[i].name);
+    mainChart.data.datasets[0].data.push(imagePool[i].numClicked);
+    mainChart.data.datasets[1].data.push(imagePool[i].timesRendered);
+  }
+
+}
 
 function postResults() {
 
@@ -125,7 +260,13 @@ function clickHandler(event) {
   } else {
     event = false;
     alert('Thank you for taking the product servey!');
-    postResults();
+    // postResults();
+    renderChartData();
+    mainChart.update();
+
+    getImage1.removeEventListener('click', clickHandler);
+    getImage2.removeEventListener('click', clickHandler);
+    getImage3.removeEventListener('click', clickHandler);
   }
 }
 
@@ -134,7 +275,3 @@ function clickHandler(event) {
 getImage1.addEventListener('click', clickHandler);
 getImage2.addEventListener('click', clickHandler);
 getImage3.addEventListener('click', clickHandler);
-
-
-
-
