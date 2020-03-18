@@ -110,7 +110,7 @@ var mainChart = new Chart(ctx, {
   },
   options: {
     legend: {
-      position: 'right',
+      position: 'bottom',
     },
     title:{
       display: true,
