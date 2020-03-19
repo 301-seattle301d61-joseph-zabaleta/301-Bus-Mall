@@ -14,96 +14,32 @@ var mainChart = new Chart(ctx, {
       label: '# of Votes',
       data: [],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
+        'lightcoral','lightcoral','lightcoral','lightcoral','lightcoral',
+        'lightcoral','lightcoral','lightcoral','lightcoral','lightcoral',
+        'lightcoral','lightcoral','lightcoral','lightcoral','lightcoral',
+        'lightcoral','lightcoral','lightcoral','lightcoral','lightcoral',
       ],
       borderColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
+        'red','red','red','red','red',
+        'red','red','red','red','red',
+        'red','red','red','red','red',
+        'red','red','red','red','red'
       ],
       borderWidth: 3
     },{
       label: '# of Times Rendered',
       data: [],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
+        'lightblue','lightblue','lightblue','lightblue','lightblue',
+        'lightblue','lightblue','lightblue','lightblue','lightblue',
+        'lightblue','lightblue','lightblue','lightblue','lightblue',
+        'lightblue','lightblue','lightblue','lightblue','lightblue',
       ],
       borderColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
+        'blue','blue','blue','blue','blue',
+        'blue','blue','blue','blue','blue',
+        'blue','blue','blue','blue','blue',
+        'blue','blue','blue','blue','blue',
       ],
       borderWidth: 3
     }]
@@ -152,22 +88,21 @@ ProductImage.prototype.renderData = function() {
 };
 
 function renderChartData() {
-
   for (var i = 0; i < imagePool.length; i++) {
 
     mainChart.data.labels.push(imagePool[i].name);
     mainChart.data.datasets[0].data.push(imagePool[i].numClicked);
     mainChart.data.datasets[1].data.push(imagePool[i].timesRendered);
-    localStorage.setItem('imagePool', JSON.stringify(imagePool));
-
   }
+  var test = 'imagePool'+ roundsOfVotes;
+  localStorage.setItem(test, JSON.stringify(imagePool));
 }
 
 function renderLocalData() {
 
   for (var i = 0; i < imagePool.length; i++) {
 
-    imagePool = JSON.parse(localStorage.imagePool);
+    imagePool = JSON.parse(localStorage.imagePool0);
     // console.log(imagePool);
 
     mainChart.data.labels.push(imagePool[i].name);
@@ -207,7 +142,7 @@ new ProductImage('Usb', 'img/usb.gif');
 new ProductImage('Water-can', 'img/water-can.jpg');
 new ProductImage('Wine-glass', 'img/wine-glass.jpg');
 
-console.log(imagePool);
+// console.log(imagePool);
 
 //creating variables to access img tags in html
 var getImage1 = document.getElementById('img1');
@@ -229,7 +164,6 @@ function rig() {
   }
   return imagePool[i];
 }
-
 
 //Renders random image to the DOM
 function renderProducts() {
@@ -260,9 +194,11 @@ var counter = 0;
 function clickHandler(event) {
 
   // console.log(event.target.name);
+  var roundsOfVotes = localStorage.getItem(JSON.parse(localStorage.roundsOfVotes));
+  if (!localStorage.imagePool0) {
 
-  if (!localStorage.imagePool) {
-    if (counter < 25 ) {
+
+    if (counter < 3 ) {
 
       for ( var i = 0; i < imagePool.length; i++)
         if (imagePool[i].name === event.target.name) {
@@ -274,7 +210,6 @@ function clickHandler(event) {
     } else {
       event = false;
       // alert('Thank you for taking the product servey!');
-      // postResults();
       renderChartData();
       mainChart.update();
 
@@ -293,6 +228,10 @@ function clickHandler(event) {
 
   }
 
+  roundsOfVotes++;
+  localStorage.setItem('roundsOfVotes', roundsOfVotes);
+
+
 }
 
 //adding listener to elements in html
@@ -302,22 +241,30 @@ getImage3.addEventListener('click', clickHandler);
 
 //this function runs when the webpage is loaded and if local storage has data for our chart then loads that and does not allow voting again.
 function refreshTest() {
-  if (localStorage.imagePool) {
-    getImage1.removeEventListener('click', clickHandler);
-    getImage2.removeEventListener('click', clickHandler);
-    getImage3.removeEventListener('click', clickHandler);
 
-    renderLocalData();
-    mainChart.update();
+  if (window.localStorage.length !== 0) {
+    var answer = confirm('Oops! Looks like you have already taken the survey. Would you like to take it again?');
+    if (answer) {
+      console.log('Yes new run new survey');
+    } else {
+      console.log('No new survey');
+      getImage1.removeEventListener('click', clickHandler);
+      getImage2.removeEventListener('click', clickHandler);
+      getImage3.removeEventListener('click', clickHandler);
+
+      renderLocalData();
+      mainChart.update();
+
+    }
   } else {
-    // console.log('something');
+    console.log('Storage is empty run survey normally');
   }
-
 }
 
 refreshTest();
 
 //button handler for clearning the chart
+// eslint-disable-next-line no-unused-vars
 function buttonHandler(event) {
   localStorage.clear();
   location.reload();
