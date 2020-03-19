@@ -129,61 +129,50 @@ var mainChart = new Chart(ctx, {
 
 //construction function to create image objects
 function ProductImage(name, imagePath) {
-
   this.name = name;
   this.imagePath = imagePath;
   this.numClicked = 0;
   this.timesRendered = 0;
   imagePool.push(this);
-
 }
 
-ProductImage.prototype.renderData = function() {
+//Method being added to our objects when created. renderData handles content for the result box writing the results to the DOM.
+//CURRENTLY NOT IN USE
+// ProductImage.prototype.renderData = function() {
+//   var getList = document.getElementById('voteData');
+//   var createListEl = document.createElement('li');
+//   // var message = this.name + ' had ' + this.numClicked + ' votes and was shown ' + this.timesRendered + ' times.';
+//   var message = this.name + ' had ' + this.numClicked + ' votes';
+//   createListEl.textContent = message;
+//   getList.appendChild(createListEl);
+// };
 
-  var getList = document.getElementById('voteData');
-  var createListEl = document.createElement('li');
-
-  // var message = this.name + ' had ' + this.numClicked + ' votes and was shown ' + this.timesRendered + ' times.';
-  var message = this.name + ' had ' + this.numClicked + ' votes';
-
-  createListEl.textContent = message;
-
-  getList.appendChild(createListEl);
-};
-
+//renderChartData handles pushing numClicked and timesRendered into my chart's label, and datasets array. Then we are setting the history into local storage.
 function renderChartData() {
-
   for (var i = 0; i < imagePool.length; i++) {
-
     mainChart.data.labels.push(imagePool[i].name);
     mainChart.data.datasets[0].data.push(imagePool[i].numClicked);
     mainChart.data.datasets[1].data.push(imagePool[i].timesRendered);
     localStorage.setItem('imagePool', JSON.stringify(imagePool));
-
   }
 }
 
+//renderLocalData handles pushing local storage data into the chart's label, and datasets arrays.
 function renderLocalData() {
-
   for (var i = 0; i < imagePool.length; i++) {
-
     imagePool = JSON.parse(localStorage.imagePool);
-    // console.log(imagePool);
-
     mainChart.data.labels.push(imagePool[i].name);
     mainChart.data.datasets[0].data.push(imagePool[i].numClicked);
     mainChart.data.datasets[1].data.push(imagePool[i].timesRendered);
   }
 }
 
-//not being used at this time anymore.
+//postResults function is used to write the results of votes onto the DOM in a result box. CURRRENTLY NOT IN USE
 // eslint-disable-next-line no-unused-vars
-function postResults() {
-
-  for (var i = 0; i < imagePool.length; i++)
-
-    imagePool[i].renderData();
-}
+// function postResults() {
+//   for (var i = 0; i < imagePool.length; i++)
+//     imagePool[i].renderData();
+// }
 
 //building objects with constructor for each image
 new ProductImage('Bag', 'img/bag.jpg');
@@ -207,8 +196,6 @@ new ProductImage('Usb', 'img/usb.gif');
 new ProductImage('Water-can', 'img/water-can.jpg');
 new ProductImage('Wine-glass', 'img/wine-glass.jpg');
 
-console.log(imagePool);
-
 //creating variables to access img tags in html
 var getImage1 = document.getElementById('img1');
 var getImage2 = document.getElementById('img2');
@@ -216,9 +203,7 @@ var getImage3 = document.getElementById('img3');
 
 //Random image generator function rig=random image generator
 function rig() {
-
   var i = Math.floor(Math.random() * imagePool.length);
-
   while (
     imagePool[i].name === getImage1.name ||
     imagePool[i].name === getImage2.name ||
@@ -229,7 +214,6 @@ function rig() {
   }
   return imagePool[i];
 }
-
 
 //Renders random image to the DOM
 function renderProducts() {
@@ -253,13 +237,12 @@ function renderProducts() {
   newImage3.timesRendered++;
 }
 
+//Renders first images to the page
 renderProducts();
 
 //event handler that once fired renders new images and also tracks numClicks.
 var counter = 0;
 function clickHandler(event) {
-
-  // console.log(event.target.name);
 
   if (!localStorage.imagePool) {
     if (counter < 25 ) {
@@ -274,7 +257,7 @@ function clickHandler(event) {
     } else {
       event = false;
       // alert('Thank you for taking the product servey!');
-      // postResults();
+      // postResults(); //this was used previously with Result box DOM Writing
       renderChartData();
       mainChart.update();
 
@@ -318,12 +301,12 @@ function refreshTest() {
 refreshTest();
 
 //button handler for clearning the chart
+// eslint-disable-next-line no-unused-vars
 function buttonHandler(event) {
   localStorage.clear();
   location.reload();
 }
 
 //attached event handler to event listener
-
 var buttonEl = document.getElementById('reset');
 buttonEl.addEventListener('click', buttonHandler);

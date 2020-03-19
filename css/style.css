@@ -1,3 +1,4 @@
+/* global changes ***********/
 body {
   margin: 10px auto;
   width: 1000px;
@@ -16,6 +17,23 @@ h2 {
   text-decoration: underline;
 }
 
+/* Selectors used with Result Box no in use */
+/* ul {
+  vertical-align: top;
+  display: inline-block;
+  height: 510px;
+  list-style: square;
+  list-style-position: inside;
+  padding-top: 5px;
+}
+
+li {
+  text-align: left;
+  font-size: 1.1em;
+} */
+
+
+/* Header section ***********/
 header {
   padding: 5px;
   margin: 10px auto;
@@ -32,28 +50,7 @@ header div {
   vertical-align: middle;
 }
 
-#result-box {
-  /* display: inline-block; */
-  background-color: rgba(27, 21, 21, 0.2);
-  border-radius: 10%;
-  margin-right: 5px;
-  height: 500px;
-  width: 240px;
-  padding-top: 10px;
-}
-
-#product-box {
-  height: 250px;
-  width: 745px;
-}
-
-#product-box img {
-  width: 230px;
-  height: 250px;
-  border: solid thin black;
-  border-radius: 10px;
-}
-
+/* Main Body ***********/
 #main {
   width: inherit;
   padding-top: 5px;
@@ -67,27 +64,47 @@ header div {
   display: inline-block;
 }
 
+/* Result box Currently Not in Use */
+/* #result-box {
+  background-color: rgba(27, 21, 21, 0.2);
+  border-radius: 10%;
+  margin-right: 5px;
+  height: 500px;
+  width: 240px;
+  padding-top: 10px;
+} */
+
+/* Product Box ***********/
+#product-box {
+  height: 250px;
+  width: 745px;
+}
+
+#product-box img {
+  width: 230px;
+  height: 250px;
+  border: solid thin black;
+  border-radius: 10px;
+}
+
 #product-box div {
   margin-right: 5px;
   vertical-align: top;
   display: inline-block;
-
 }
 
+/* Instruction Box ***********/
 #instructions {
   width: 100%;
   margin: 10px auto;
   padding-top: 10px;
   height: 125px;
   text-align: center;
-  /* margin-top: 50px; */
-  /* float: right; */
   vertical-align: top;
   border-bottom: solid thin black;
 }
 
-
-
+/* Chart Box ***********/
 #chart-box {
   width: 100%;
   height: 500px;
@@ -99,6 +116,7 @@ header div {
   height: 500px;
 }
 
+/* Resest Box ***********/
 #reset-box {
   text-align: center;
   border-bottom: solid thin black;
@@ -106,7 +124,12 @@ header div {
   margin-bottom: 10px;
 }
 
+#reset {
+  border-radius: 10px;
+  float: 10px;
+}
 
+/* Footer ***********/
 footer {
   opacity: 0.7;
   height: 150px;
@@ -118,22 +141,3 @@ footer img {
   border-radius: 50%;
 }
 
-ul {
-  vertical-align: top;
-  display: inline-block;
-  /* width: 220px; */
-  height: 510px;
-  list-style: square;
-  list-style-position: inside;
-  padding-top: 5px;
-}
-
-li {
-  text-align: left;
-  /* width: 250px; */
-  font-size: 1.1em;
-}
-
-#reset {
-  border-radius: 10px;
-}
