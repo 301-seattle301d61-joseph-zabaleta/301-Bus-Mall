@@ -1,10 +1,9 @@
 'use strict';
 
 //Bucket for all my image objects
-
 var imagePool = [];
 
-
+//This creates a new chart
 var ctx = document.getElementById('myChart').getContext('2d');
 // eslint-disable-next-line no-undef
 var mainChart = new Chart(ctx, {
@@ -128,9 +127,7 @@ var mainChart = new Chart(ctx, {
   }
 });
 
-
 //construction function to create image objects
-
 function ProductImage(name, imagePath) {
 
   this.name = name;
@@ -265,7 +262,7 @@ function clickHandler(event) {
   // console.log(event.target.name);
 
   if (!localStorage.imagePool) {
-    if (counter < 5 ) {
+    if (counter < 25 ) {
 
       for ( var i = 0; i < imagePool.length; i++)
         if (imagePool[i].name === event.target.name) {
@@ -330,30 +327,3 @@ function buttonHandler(event) {
 
 var buttonEl = document.getElementById('reset');
 buttonEl.addEventListener('click', buttonHandler);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function showLocal() {
-//   if (!localStorage.imagePool) {
-//     console.log(localStorage.imagePool);
-//   }
-
-// }
