@@ -161,8 +161,22 @@ function renderChartData() {
     mainChart.data.labels.push(imagePool[i].name);
     mainChart.data.datasets[0].data.push(imagePool[i].numClicked);
     mainChart.data.datasets[1].data.push(imagePool[i].timesRendered);
-  }
+    localStorage.setItem('imagePool', JSON.stringify(imagePool));
 
+  }
+}
+
+function renderLocalData() {
+
+  for (var i = 0; i < imagePool.length; i++) {
+
+    imagePool = JSON.parse(localStorage.imagePool);
+    // console.log(imagePool);
+
+    mainChart.data.labels.push(imagePool[i].name);
+    mainChart.data.datasets[0].data.push(imagePool[i].numClicked);
+    mainChart.data.datasets[1].data.push(imagePool[i].timesRendered);
+  }
 }
 
 //not being used at this time anymore.
@@ -248,33 +262,98 @@ renderProducts();
 var counter = 0;
 function clickHandler(event) {
 
-  console.log(event.target.name);
+  // console.log(event.target.name);
 
+  if (!localStorage.imagePool) {
+    if (counter < 5 ) {
 
-  if (counter < 25 ) {
+      for ( var i = 0; i < imagePool.length; i++)
+        if (imagePool[i].name === event.target.name) {
+          imagePool[i].numClicked++;
+          counter++;
+        }
+      renderProducts();
 
-    for ( var i = 0; i < imagePool.length; i++)
-      if (imagePool[i].name === event.target.name) {
-        imagePool[i].numClicked++;
-        counter++;
-      }
-    renderProducts();
+    } else {
+      event = false;
+      // alert('Thank you for taking the product servey!');
+      // postResults();
+      renderChartData();
+      mainChart.update();
 
+      getImage1.removeEventListener('click', clickHandler);
+      getImage2.removeEventListener('click', clickHandler);
+      getImage3.removeEventListener('click', clickHandler);
+    }
   } else {
     event = false;
-    alert('Thank you for taking the product servey!');
-    // postResults();
-    renderChartData();
-    mainChart.update();
-
     getImage1.removeEventListener('click', clickHandler);
     getImage2.removeEventListener('click', clickHandler);
     getImage3.removeEventListener('click', clickHandler);
-  }
-}
 
+    renderLocalData();
+    mainChart.update();
+
+  }
+
+}
 
 //adding listener to elements in html
 getImage1.addEventListener('click', clickHandler);
 getImage2.addEventListener('click', clickHandler);
 getImage3.addEventListener('click', clickHandler);
+
+//this function runs when the webpage is loaded and if local storage has data for our chart then loads that and does not allow voting again.
+function refreshTest() {
+  if (localStorage.imagePool) {
+    getImage1.removeEventListener('click', clickHandler);
+    getImage2.removeEventListener('click', clickHandler);
+    getImage3.removeEventListener('click', clickHandler);
+
+    renderLocalData();
+    mainChart.update();
+  } else {
+    // console.log('something');
+  }
+
+}
+
+refreshTest();
+
+//button handler for clearning the chart
+function buttonHandler(event) {
+  localStorage.clear();
+  location.reload();
+}
+
+//attached event handler to event listener
+
+var buttonEl = document.getElementById('reset');
+buttonEl.addEventListener('click', buttonHandler);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function showLocal() {
+//   if (!localStorage.imagePool) {
+//     console.log(localStorage.imagePool);
+//   }
+
+// }
